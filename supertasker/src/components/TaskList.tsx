@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import ApplicationContext from '../ApplicationContext';
 import Task from './Task';
+import { useAppSelector } from '../hooks';
 
 const TaskList = () => {
-  const { tasks } = useContext(ApplicationContext);
+  const tasks = useAppSelector((state) => state.tasks.entities);
 
   return (
     <section className="task-list">

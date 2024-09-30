@@ -19,11 +19,16 @@ const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<DraftTask>) => {
+    addTask: (tasks, action: PayloadAction<DraftTask>) => {
       const task = createTask(action.payload);
-      state.entities.unshift(task);
+      tasks.entities.unshift(task);
     },
-    removeTask: (state) => state,
+    removeTask: (tasks, action: PayloadAction<Task['id']>) => {
+      const index = tasks.entities.findIndex(
+        (task) => task.id === action.payload,
+      );
+      tasks.entities.splice(index, 1);
+    },
   },
 });
 

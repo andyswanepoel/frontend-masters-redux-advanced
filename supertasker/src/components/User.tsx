@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import UserEdit from './user-edit';
+import UserEdit from './UserEdit';
 
 type UserProps = {
   user: User;
