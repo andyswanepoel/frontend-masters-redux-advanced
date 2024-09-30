@@ -1,5 +1,5 @@
-import CreateTask from './create-task';
-import TaskList from './task-list';
+import CreateTask from './CreateTask';
+import TaskList from './TaskList';
 
 const Application = () => {
   return (

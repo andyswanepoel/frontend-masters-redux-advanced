@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ApplicationContext from '../context';
-import Task from './task';
+import Task from './Task';
 
 const TaskList = () => {
   const { tasks } = useContext(ApplicationContext);

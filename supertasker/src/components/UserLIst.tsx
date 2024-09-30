@@ -1,5 +1,5 @@
-import CreateUser from './create-user';
-import Task from './user';
+import CreateUser from './CreateUser';
+import Task from './User';
 
 const UserList = () => {
   const users: User[] = [];
