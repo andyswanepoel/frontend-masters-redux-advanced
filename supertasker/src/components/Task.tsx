@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ApplicationContext from '../ApplicationContext';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { removeTask } from '../features/tasksSlice';
 
 type TaskProps = {
@@ -8,8 +8,9 @@ type TaskProps = {
 };
 
 const Task = ({ task }: TaskProps) => {
-  const { columns, users } = useContext(ApplicationContext);
+  const { columns } = useContext(ApplicationContext);
   const dispatch = useAppDispatch();
+  const users = useAppSelector((state) => state.users.entities);
 
   const status = columns.find((column) => column.id === task.column)?.title;
   const user = users.find((user) => user.id === task.user);

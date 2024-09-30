@@ -1,18 +1,20 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
+import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit';
+
+import data from '../api/data.json';
+import { removeUser } from './usersSlice';
 
 // Good to start out with a shape for your state that uses an object
-export type TaskState = {
+export type TasksState = {
   entities: Task[];
 };
 
-type DraftTask = RequireOnly<Task, 'title'>;
+export type DraftTask = RequireOnly<Task, 'title'>;
 
-const createTask = (draftTask: DraftTask): Task => {
-  return { ...draftTask, id: nanoid() };
+export const createTask = (draftTask: DraftTask): Task => {
+  return { id: nanoid(), ...draftTask };
 };
-const initialState: TaskState = {
-  entities: [],
+export const initialState: TasksState = {
+  entities: data.tasks,
 };
 
 const tasksSlice = createSlice({
@@ -29,6 +31,16 @@ const tasksSlice = createSlice({
       );
       tasks.entities.splice(index, 1);
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(removeUser, (tasks, action) => {
+      const userId = action.payload;
+      for (const task of tasks.entities) {
+        if (task.user === userId) {
+          task.user = undefined;
+        }
+      }
+    });
   },
 });
 
