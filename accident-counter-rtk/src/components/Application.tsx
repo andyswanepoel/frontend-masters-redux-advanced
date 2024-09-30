@@ -1,8 +1,8 @@
 import React from 'react';
-import Counter from './counter';
+import Counter from './Counter';
 
 const Application = () => (
-  <main className="flex items-center h-full place-content-center bg-cyan-900">
+  <main className="flex h-full place-content-center items-center bg-cyan-900">
     <Counter />
   </main>
 );
